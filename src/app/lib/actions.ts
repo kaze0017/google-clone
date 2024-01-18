@@ -13,6 +13,7 @@ export async function searchWeb({ query }: { query: string }) {
   const result = await fetch(
     `https://www.googleapis.com/customsearch/v1?key=${api_key}&cx=${api_cx}&q=${query}`
   );
+  if (!result.ok) throw new Error("Failed to fetch" + result.status);
 
   const data = await result.json();
   return data;
