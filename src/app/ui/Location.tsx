@@ -10,7 +10,6 @@ export default function Location() {
 
   useEffect(() => {
     const apiUrl = `https://extreme-ip-lookup.com/json/?key=${process.env.NEXT_PUBLIC_EX_API_KEY}`;
-    console.log("url:", apiUrl);
 
     fetch(apiUrl)
       .then((res) => res.json())

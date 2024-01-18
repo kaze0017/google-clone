@@ -9,6 +9,7 @@ import {
   useRouter,
   useParams,
 } from "next/navigation";
+import { searchWeb } from "@/app/lib/actions";
 
 export default function SearchBox() {
   const searchParams = useSearchParams();
@@ -16,6 +17,7 @@ export default function SearchBox() {
   const { replace } = useRouter();
   const params = new URLSearchParams(searchParams);
   const [query, setQuery] = React.useState(params.get("search"));
+
 
   function handleQuery(query) {
     setQuery(query);
@@ -28,6 +30,7 @@ export default function SearchBox() {
     console.log(query);
     const params = new URLSearchParams(searchParams);
     params.set("search", query);
+
     replace(`${pathname}?${params.toString()}`);
   }
 
