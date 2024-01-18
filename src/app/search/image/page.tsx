@@ -8,7 +8,7 @@ export default async function Page({ searchParams }: any) {
   const data = await searchImg({ query, index });
   const result = data?.items || [];
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       {result.length > 0 ? (
         <ImgSearchResults results={data} />
       ) : (
