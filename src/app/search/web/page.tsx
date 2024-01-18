@@ -2,9 +2,10 @@ import React from "react";
 import { searchWeb } from "@/app/lib/actions";
 import Link from "next/link";
 import WebSearchResults from "@/app/ui/search/WebSearchResults";
-export default async function page({ searchParams }: any) {
+export default async function Page({ searchParams }: any) {
   const query = searchParams.search;
-  const data = await searchWeb({ query });
+  const index = searchParams.start || "1";
+  const data = await searchWeb({ query, index });
   const result = data?.items || [];
   return (
     <div>
