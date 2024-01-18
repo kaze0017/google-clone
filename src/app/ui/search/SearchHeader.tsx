@@ -17,7 +17,7 @@ export default function SearchHeader() {
             }
             width={"120"}
             height={"40"}
-            alter="Google Logo"
+            alt="Google Logo"
           />
         </Link>
         <div className="flex flex-1">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { RxCross2 } from "react-icons/rx";
+import { RiCloseLine as RxCross2 } from "react-icons/ri"; // Updated import
 import { FaMicrophone } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import {
@@ -9,44 +9,40 @@ import {
   useRouter,
   useParams,
 } from "next/navigation";
-import { searchWeb } from "@/app/lib/actions";
 
 export default function SearchBox() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
   const params = new URLSearchParams(searchParams);
-  const [query, setQuery] = React.useState(params.get("search"));
+  const [query, setQuery] = React.useState(params.get("search") || "");
 
-
-  function handleQuery(query) {
-    setQuery(query);
+  function handleQuery(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value);
   }
+
   function deleteQuery() {
     setQuery("");
   }
 
-  function handleSubmit() {
-    console.log(query);
-    const params = new URLSearchParams(searchParams);
-    params.set("search", query);
+  function handleSubmit(e?: React.FormEvent<HTMLFormElement>) {
+    e?.preventDefault();
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("search", query);
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${newParams.toString()}`);
   }
 
   return (
     <form
       className="flex items-center border border-gray-200 rounded-full shadow-lg px-6 py-1 ml-10 mr-5 flex-grow max-w-3xl"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
+      onSubmit={handleSubmit}
     >
       <input
         type="text"
-        className="w-full focus:outline-none "
+        className="w-full focus:outline-none"
         value={query}
-        onChange={(e) => handleQuery(e.target.value)}
+        onChange={handleQuery}
       />
       <RxCross2
         className="text-2xl text-gray-500 cursor-pointer sm:mr-2"
