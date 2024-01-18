@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { SlMagnifier } from "react-icons/sl";
 import { FaMicrophone } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { getRandomWord } from "../lib/actions";
+import { getRandomWord } from "../../lib/actions";
 
 export default function HomeSearch() {
   const router = useRouter();

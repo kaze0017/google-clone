@@ -1,5 +1,5 @@
 import { openGraphImage } from "@/app/shared-metadata";
-import HomeHeader from "@/app/ui/HomeHeader";
+import HomeHeader from "@/app/ui/home/HomeHeader";
 import Image from "next/image";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 import React from "react";
-import HomeSearch from "@/app/ui/HomeSearch";
+import HomeSearch from "@/app/ui/home/HomeSearch";
 
 export default function Google() {
   return (
